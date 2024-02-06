@@ -6,10 +6,11 @@
     <title>入力画面</title>
 </head>
 <body>
-    <form action="post">
+    <form method="post" action="exam01-result.html" th:action="@{/ex01/input-name}">
         <section>
-            <label for="name">名前</label>
+            <label for="name">名前：</label>
             <input type="text" name="name" id="name">
+            <br>
         </section>
         <button>送信</button>
     </form>
