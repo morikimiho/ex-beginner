@@ -6,20 +6,24 @@
     <title>入力画面</title>
 </head>
 <body>
-   <h1>ユーザー登録</h1>
-   <main>
-    <form action="exam04-result.html" method="post" th:action="@{/exam04/input-user}">
-        <section>
-            <label for="name">名前：</label>
-            <input type="text" name="name">
-        </section>
-        <section>
+    <h1>ユーザー登録</h1>
+    <main>
+        <form method="post" th:action="@{/exam04/input-user}" th:object="${userForm}">
+            <section>
+                <div th:errors="*{name}" style="color: red;"></div>
+                <label for="name">名前：</label>
+                <input type="text" name="name" th:field="*{name}">
+            </section>
+            <section>
+            <div th:errors="*{age}" style="color: red;"></div>
             <label for="age">年齢：</label>
-            <input type="text" name="age">
+            <input type="text" name="age" th:field="*{age}">
         </section>
         <section>
+            <div th:errors="*{comment}" style="color: red;"></div>
             <label for="comment">コメント：</label>
-            <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+            <br>
+            <textarea name="comment" id="comment" cols="30" rows="10" th:field="*{comment}"></textarea>
         </section>
         <button>送信</button>
     </form>
