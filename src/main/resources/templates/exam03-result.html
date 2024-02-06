@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +8,9 @@
 <body>
     <h1>合計金額</h1>
     <p>■税抜き価格</p>
-    <p>円</p>
+    <span th:text="${application.sum}"></span><span>円</span>
     <br>
     <p>■税こみ価格</p>
-    <p>円</p>
+    <span th:text="${application.includeTax}"></span><span>円</span>
 </body>
 </html>
