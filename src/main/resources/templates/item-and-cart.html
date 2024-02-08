@@ -14,9 +14,9 @@
                     <li>
                         <span th:text="${product.name}"></span>
                         <span th:text="${product.price}"></span>円
-                        <!-- <input type="hidden" name="index" th:value="${stat.index}" /> -->
+                        <!-- <span th:text="${stat.index}"></span> -->
                         
-                        <button style="margin-left: 20px;">カートへ</button>
+                        <button style="margin-left: 20px;" name="index" th:value="${stat.index}">カートへ</button>
                     </li>
                 </ul>
             </form>
