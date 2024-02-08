@@ -55,10 +55,6 @@ public class ShoppingCartController {
          * sessionスコープに空のリストを格納する
          */
         LinkedList<Item> initialCart = new LinkedList<>();
-        // initialCart.add(notebook);
-        // initialCart.add(stationerySet);
-        // initialCart.add(file);
-
 
         if(session.getAttribute("cartItems") == null) {
             session.setAttribute("cartItems", initialCart);
@@ -78,15 +74,25 @@ public class ShoppingCartController {
     }
 
     @PostMapping("/inCart")
-    public String inCart(Integer index) {
-        System.out.println(index);
+    public String inCart(int index) {
+        // indexをもとに商品一覧から追加したい商品を取得
         List<Item> products = (List<Item>) application.getAttribute("products");
         Item addItem = products.get(index);
 
+        // 追加する
         LinkedList<Item> inCart = (LinkedList<Item>) session.getAttribute("cartItems");
         inCart.add(addItem);
-        System.out.println(inCart);
 
         return "redirect:/product";
     }
+
+    @PostMapping("/deleteItem")
+    public String delete(int index) {
+        // indexをもとにカートから削除する商品を選択
+        LinkedList<Item> inCart = (LinkedList<Item>) session.getAttribute("cartItems");
+        inCart.remove(index);
+        return "redirect:/product";
+    }
+
+
 }

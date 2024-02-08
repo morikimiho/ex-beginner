@@ -14,7 +14,6 @@
                     <li>
                         <span th:text="${product.name}"></span>
                         <span th:text="${product.price}"></span>円
-                        <!-- <span th:text="${stat.index}"></span> -->
                         
                         <button style="margin-left: 20px;" name="index" th:value="${stat.index}">カートへ</button>
                     </li>
@@ -23,14 +22,17 @@
         </section>
         <section style="width: 50%;">
             <p>ショッピングカート</p>
-            <ul th:each="cartItem : ${session.cartItems}">
-                <li>
-                    <span th:text="${cartItem.name}"></span>
-                    <span th:text="${cartItem.price}"></span>円
-                </li>
-            </ul>
-            <p>合計</p>
-            <span th:text="${totalPrice}"></span>円
+            <form th:action="@{/product/deleteItem}" method="post">
+                <ul th:each="cartItem, stat : ${session.cartItems}">
+                    <li>
+                        <span th:text="${cartItem.name}"></span>
+                        <span th:text="${cartItem.price}"></span>円
+                        <button style="margin-left: 20px;" name="index" th:value="${stat.index}">削除</button>
+                    </li>
+                </ul>
+                <p>合計</p>
+                <span th:text="${totalPrice}"></span>円
+            </form>
         </section>
     </main>
 </body>
